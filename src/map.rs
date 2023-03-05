@@ -5,9 +5,9 @@ use specs::prelude::*;
 
 use super::Rect;
 
-const DEFAULT_MAP_WIDTH: usize = 80;
-const DEFAULT_MAP_HEIGHT: usize = 43;
-const DEFAULT_MAP_COUNT: usize = DEFAULT_MAP_WIDTH * DEFAULT_MAP_HEIGHT;
+pub const DEFAULT_MAP_WIDTH: usize = 80;
+pub const DEFAULT_MAP_HEIGHT: usize = 43;
+pub const DEFAULT_MAP_COUNT: usize = DEFAULT_MAP_WIDTH * DEFAULT_MAP_HEIGHT;
 
 #[derive(PartialEq, Copy, Clone)]
 pub enum TileType {

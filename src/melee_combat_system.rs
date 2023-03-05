@@ -1,4 +1,3 @@
-use rltk::console;
 use specs::prelude::*;
 
 use super::{CombatStats, GameLog, Name, SufferDamage, WantsToMelee};
