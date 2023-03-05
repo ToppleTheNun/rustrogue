@@ -1,2 +1,6 @@
 /target
 .idea
+public
+!public/.gitkeep
+dist
+node_modules
