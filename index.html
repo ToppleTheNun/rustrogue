@@ -4,15 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>rustrogue</title>
+    <script type="application/javascript">
+      if (
+        localStorage.theme === "dark" ||
+        (!("theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
   </head>
-  <body class="bg-gray-100 font-sans text-slate-900 antialiased min-h-screen">
+  <body
+    class="bg-gray-100 dark:bg-gray-900 font-sans text-slate-900 antialiased min-h-screen"
+  >
     <noscript>You need to enable JavaScript to run this game.</noscript>
     <div class="flex flex-col min-h-screen">
-      <header class="container mx-auto sticky top-0 z-40 bg-gray-100">
+      <header
+        class="container mx-auto sticky top-0 z-40 bg-gray-100 dark:bg-gray-900"
+      >
         <div
           class="flex h-16 items-center justify-between border-b border-b-slate-200 py-4"
         >
-          <h1 class="text-3xl font-bold tracking-tight text-gray-900">
+          <h1
+            class="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100"
+          >
             rustrogue
           </h1>
           <nav>
@@ -40,153 +57,167 @@
           <section class="flex flex-col">
             <canvas id="canvas"></canvas>
           </section>
-          <section class="flex flex-col">
-            <h2 class="text-2xl font-bold tracking-tight text-gray-900">
+          <section class="flex flex-col gap-3">
+            <h2
+              class="text-2xl font-bold tracking-tight text-gray-900 dark:text-gray-100"
+            >
               Controls
             </h2>
-            <ul>
-              <li class="text-gray-500">
+            <section class="flex flex-col gap-2">
+              <h3
+                class="text-xl font-bold tracking-tight text-gray-900 dark:text-gray-100"
+              >
+                Movement
+              </h3>
+              <p class="text-gray-900 dark:text-gray-100">
                 <kbd
-                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg"
+                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500"
                   >←</kbd
                 >
                 /
                 <kbd
-                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg"
+                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500"
                   >Num4</kbd
                 >
                 /
                 <kbd
-                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg"
+                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500"
                   >H</kbd
                 >
                 - Move Left
-              </li>
-              <li class="text-gray-500">
+              </p>
+              <p class="text-gray-900 dark:text-gray-100">
                 <kbd
-                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg"
+                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500"
                   >→</kbd
                 >
                 /
                 <kbd
-                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg"
+                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500"
                   >Num6</kbd
                 >
                 /
                 <kbd
-                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg"
+                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500"
                   >L</kbd
                 >
                 - Move Right
-              </li>
-              <li class="text-gray-500">
+              </p>
+              <p class="text-gray-900 dark:text-gray-100">
                 <kbd
-                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg"
+                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500"
                   >↑</kbd
                 >
                 /
                 <kbd
-                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg"
+                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500"
                   >Num8</kbd
                 >
                 /
                 <kbd
-                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg"
+                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500"
                   >K</kbd
                 >
                 - Move Up
-              </li>
-              <li class="text-gray-500">
+              </p>
+              <p class="text-gray-900 dark:text-gray-100">
                 <kbd
-                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg"
+                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500"
                   >↓</kbd
                 >
                 /
                 <kbd
-                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg"
+                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500"
                   >Num2</kbd
                 >
                 /
                 <kbd
-                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg"
+                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500"
                   >J</kbd
                 >
                 - Move Down
-              </li>
-              <li class="text-gray-500">
+              </p>
+              <p class="text-gray-900 dark:text-gray-100">
                 <kbd
-                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg"
+                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500"
                   >Num7</kbd
                 >
                 /
                 <kbd
-                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg"
+                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500"
                   >Y</kbd
                 >
                 - Move Up and Left
-              </li>
-              <li class="text-gray-500">
+              </p>
+              <p class="text-gray-900 dark:text-gray-100">
                 <kbd
-                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg"
+                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500"
                   >Num9</kbd
                 >
                 /
                 <kbd
-                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg"
+                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500"
                   >U</kbd
                 >
                 - Move Up and Right
-              </li>
-              <li class="text-gray-500">
+              </p>
+              <p class="text-gray-900 dark:text-gray-100">
                 <kbd
-                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg"
+                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500"
                   >Num1</kbd
                 >
                 /
                 <kbd
-                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg"
+                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500"
                   >B</kbd
                 >
                 - Move Down and Left
-              </li>
-              <li class="text-gray-500">
+              </p>
+              <p class="text-gray-900 dark:text-gray-100">
                 <kbd
-                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg"
+                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500"
                   >Num3</kbd
                 >
                 /
                 <kbd
-                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg"
+                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500"
                   >N</kbd
                 >
                 - Move Down and Right
-              </li>
-              <li class="text-gray-500">
+              </p>
+            </section>
+            <section class="flex flex-col gap-2">
+              <h3
+                class="text-xl font-bold tracking-tight text-gray-900 dark:text-gray-100"
+              >
+                Others
+              </h3>
+              <p class="text-gray-900 dark:text-gray-100">
                 <kbd
-                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg"
+                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500"
                   >G</kbd
                 >
                 - Pick up item
-              </li>
-              <li class="text-gray-500">
+              </p>
+              <p class="text-gray-900 dark:text-gray-100">
                 <kbd
-                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg"
+                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500"
                   >I</kbd
                 >
                 - Show inventory screen
-              </li>
-              <li class="text-gray-500">
+              </p>
+              <p class="text-gray-900 dark:text-gray-100">
                 <kbd
-                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg"
+                  class="px-2 py-1.5 text-xs font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500"
                   >D</kbd
                 >
                 - Show drop item screen
-              </li>
-            </ul>
+              </p>
+            </section>
           </section>
         </div>
       </main>
-      <footer class="container mx-auto text-gray-900">
+      <footer class="container mx-auto text-gray-900 dark:text-gray-100">
         <div
           class="flex flex-col items-center justify-between gap-4 border-t border-t-slate-200 py-10 md:h-24 md:flex-row md:py-0"
         >
