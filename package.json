@@ -13,6 +13,11 @@
   "license": "MIT",
   "devDependencies": {
     "@antfu/ni": "^0.20.0",
+    "@tsconfig/vite-react": "^1.0.1",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.21",
+    "prettier": "^2.8.4",
+    "tailwindcss": "^3.2.7",
     "vite": "^4.1.4"
   }
 }
