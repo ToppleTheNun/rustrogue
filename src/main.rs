@@ -1,5 +1,7 @@
 mod components;
 mod damage_system;
+mod gamelog;
+mod gui;
 mod map;
 mod map_indexing_system;
 mod melee_combat_system;
@@ -10,6 +12,7 @@ mod visibility_system;
 
 pub use components::*;
 use damage_system::DamageSystem;
+pub use gamelog::*;
 pub use map::*;
 use map_indexing_system::MapIndexingSystem;
 use melee_combat_system::MeleeCombatSystem;
@@ -78,6 +81,8 @@ impl GameState for State {
                 ctx.set(pos.x, pos.y, render.fg, render.bg, render.glyph);
             }
         }
+
+        gui::draw_ui(&self.ecs, ctx);
     }
 }
 
@@ -109,6 +114,7 @@ fn main() -> rltk::BError {
     let context = RltkBuilder::simple80x50()
         .with_title("Roguelike Tutorial")
         .build()?;
+
     let mut gs = State { ecs: World::new() };
     gs.ecs.register::<Position>();
     gs.ecs.register::<Renderable>();
@@ -202,6 +208,9 @@ fn main() -> rltk::BError {
     gs.ecs.insert(rltk::Point::new(player_x, player_y));
     gs.ecs.insert(player_entity);
     gs.ecs.insert(RunState::PreRun);
+    gs.ecs.insert(GameLog {
+        entries: vec!["Welcome to rustrogue".to_string()],
+    });
 
     rltk::main_loop(context, gs)
 }

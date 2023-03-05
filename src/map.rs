@@ -5,6 +5,10 @@ use specs::prelude::*;
 
 use super::Rect;
 
+const DEFAULT_MAP_WIDTH: usize = 80;
+const DEFAULT_MAP_HEIGHT: usize = 43;
+const DEFAULT_MAP_COUNT: usize = DEFAULT_MAP_WIDTH * DEFAULT_MAP_HEIGHT;
+
 #[derive(PartialEq, Copy, Clone)]
 pub enum TileType {
     Wall,
@@ -22,8 +26,6 @@ pub struct Map {
     pub tile_content: Vec<Vec<Entity>>,
 }
 
-const DEFAULT_MAP_WIDTH: i32 = 80;
-const DEFAULT_MAP_HEIGHT: i32 = 50;
 impl Map {
     pub fn xy_idx(&self, x: i32, y: i32) -> usize {
         (y as usize * self.width as usize) + x as usize
@@ -72,17 +74,14 @@ impl Map {
     /// This gives a handful of random rooms and corridors joining them together.
     pub fn new_map_rooms_and_corridors() -> Map {
         let mut map = Map {
-            tiles: vec![TileType::Wall; DEFAULT_MAP_WIDTH as usize * DEFAULT_MAP_HEIGHT as usize],
+            tiles: vec![TileType::Wall; DEFAULT_MAP_COUNT],
             rooms: Vec::new(),
-            width: DEFAULT_MAP_WIDTH,
-            height: DEFAULT_MAP_HEIGHT,
-            revealed_tiles: vec![false; DEFAULT_MAP_WIDTH as usize * DEFAULT_MAP_HEIGHT as usize],
-            visible_tiles: vec![false; DEFAULT_MAP_WIDTH as usize * DEFAULT_MAP_HEIGHT as usize],
-            blocked: vec![false; DEFAULT_MAP_WIDTH as usize * DEFAULT_MAP_HEIGHT as usize],
-            tile_content: vec![
-                Vec::new();
-                DEFAULT_MAP_WIDTH as usize * DEFAULT_MAP_HEIGHT as usize
-            ],
+            width: DEFAULT_MAP_WIDTH as i32,
+            height: DEFAULT_MAP_HEIGHT as i32,
+            revealed_tiles: vec![false; DEFAULT_MAP_COUNT],
+            visible_tiles: vec![false; DEFAULT_MAP_COUNT],
+            blocked: vec![false; DEFAULT_MAP_COUNT],
+            tile_content: vec![Vec::new(); DEFAULT_MAP_COUNT],
         };
 
         const MAX_ROOMS: i32 = 30;
