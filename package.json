@@ -12,7 +12,7 @@
   "author": "Richard Harrah",
   "license": "MIT",
   "devDependencies": {
-    "@antfu/ni": "^0.20.0",
+    "@antfu/ni": "^0.21.0",
     "@tsconfig/vite-react": "^1.0.1",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.21",
