@@ -1,7 +1,7 @@
 {
   "name": "rustrogue",
   "version": "1.0.0",
-  "packageManager": "pnpm@7.28.0",
+  "packageManager": "pnpm@7.33.7",
   "private": true,
   "scripts": {
     "build": "nr wasm && vite build --base /rustrogue/",
